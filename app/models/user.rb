@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_secure_password
   validates :username, length: { minimum: 2, maximum: 25}
   validates :email,
   format: { with: /\A\S+@.+\.\S+\z/, message: "Invalid"  },

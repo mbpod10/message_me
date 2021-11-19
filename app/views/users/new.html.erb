@@ -19,6 +19,14 @@
           <i class="mail icon orange"></i>
         </div>
       </div>
+
+      <div class="field">   
+        <%= form.label :password %>
+        <div class="ui left icon input">      
+          <%= form.password_field :password, placeholder: "Password" %>
+          <i class="lock icon orange"></i>
+        </div>
+      </div>
         
       <%= form.submit "Sign Up", class: "ui orange submit button" %>
     <% end %>
