@@ -19,3 +19,6 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 ```
 $ rails routes --exanded
 ```
+
+## Semantic UI
+[Semantic UI Link](https://github.com/doabit/semantic-ui-sass)
