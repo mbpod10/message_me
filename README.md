@@ -22,3 +22,24 @@ $ rails routes --exanded
 
 ## Semantic UI
 [Semantic UI Link](https://github.com/doabit/semantic-ui-sass)
+
+### Users
+```
+$ rails generate migration create_users
+```
+
+```rb
+class CreateUsers < ActiveRecord::Migration[6.1]
+  def change
+    create_table :users do |t|
+      t.string :username
+      t.string :email
+      t.timestamps
+    end
+  end
+end
+```
+
+```
+$ rails db:migrate
+```

@@ -1,0 +1,29 @@
+<h1> Sign Up </h1>
+
+
+<div class="four wide column container segment">
+    <div class="ui fluid raised card">
+      <div class="content">
+        <%= form_with(model: @user, local: true) do |form| %>
+          <div class="ui form">
+            <div class="field">    
+              <%= form.label :username %>
+              <div class="ui left icon input">      
+                <%= form.text_field :username, placeholder: "Username" %>
+                <i class="user icon"></i>
+              </div>
+            </div>
+            <div class="field">   
+              <%= form.label :email %>
+              <div class="ui left icon input">      
+                <%= form.email_field :email, placeholder: "Email" %>
+                <i class="lock icon"></i>
+              </div>
+            </div> 
+                <%= form.submit "Sign Up", class: "ui blue submit button" %>
+            </div>
+          </div>  
+        <% end %>
+    </div>
+  </div>  
+</div>

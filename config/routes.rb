@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
   root 'chatroom#index'
-  get 'login', to: 'sessions#new' 
+  get 'login', to: 'sessions#new'
+  resources :users
+  get 'signup', to: 'users#new'
+  post 'signup', to: 'users#create'
 end
