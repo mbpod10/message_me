@@ -11,6 +11,7 @@
       <div class="ui form">
 
         <%= form_with(scope: :session, url: login_path, local: true)  do |form| %>
+
           <div class="field">            
             <%= form.label :username %>
             <div class="ui left icon input">              
@@ -27,18 +28,23 @@
             </div>
           </div>
 
-          <%= form.submit "Log In", class: "ui orange submit button login-button" %>
+          <%= form.button "Log In", class: "ui orange submit button login-button" %>           
+
         <% end %>
 
       </div>
     </div>
     
     <div class="middle aligned column">
-      <div class="ui orange big button">
-        <i class="signup icon"></i>        
-        <%= link_to 'Sign Up', signup_path, class: "white"%>
-      </div>
+      <%= link_to signup_path, :action => 'go' do %>
+        <div class="ui orange big button">
+          <i class="signup icon"></i>
+          Sign Up
+        </div>
+      <% end %>
     </div>
+    
+
   </div>
   <div class="ui vertical divider">
     Or
