@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :logged_in_redirect, only: [:new, :create]
 
   def new
-
   end
 
   def create
@@ -27,6 +27,12 @@ class SessionsController < ApplicationController
   
   def get_credentials
     params.require(:session).permit(:username, :password)
+  end
+
+  def logged_in_redirect
+    if logged_in?
+      flash[:error] = "You are already logged in"
+    end
   end
 
 end
