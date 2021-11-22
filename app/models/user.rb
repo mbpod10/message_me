@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :messages
   has_secure_password
   before_save { self.email = email.downcase }
   validates :username, length: { minimum: 2, maximum: 25}

@@ -1,3 +1,7 @@
+```
+rails db:reset
+rails db:seed
+```
 # Message Me
 
 This is a redo of another app title `message_me` as I tried to use `Semantic UI` in a `rails 7.0.0.alpha2` application. I was able render a navbar component but was unable to create a dropdown action using jquery. `config/importmap` was horrendous to use, and given that `rails 7.0.0.alpha2` has only been out for two months, there is virtually no documentation on resolving issues. The javascript is completely changed.
@@ -48,4 +52,4 @@ $ rails db:migrate
 1. master
 2. create-users
 3. user_password
-4. 
+4. messages_branch

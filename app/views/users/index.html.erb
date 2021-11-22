@@ -1,7 +1,9 @@
 
 <% @users.each do |user| %>
-  <h1>User Id <%= user.id%></h1>
-  <h1>Username <%= user.username%></h1>
-  <h1>Email<%= user.email%></h1>
+  <h1>User Id: <%= user.id%></h1>
+  <h1>Username: <%= user.username%></h1>
+  <h1>Email: <%= user.email%></h1>
+  <h1>Message Count: <%= user.messages.count%></h1>
+
   <hr/>
 <% end %>
