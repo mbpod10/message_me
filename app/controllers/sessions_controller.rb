@@ -5,13 +5,21 @@ class SessionsController < ApplicationController
   end
 
   def create
-    puts "CREDENTIALS: #{get_credentials}"
     user = User.find_by(username: get_credentials[:username])
     if user && user.authenticate(get_credentials[:password])
-      puts "TRUEEEEEEEEEEE"
+      session[:user_id] = user.id
+      flash[:success] = "#{user.username} Logged In"
+      redirect_to root_path
     else
-      puts "FALSEEEEEEE"
+      flash.now[:error] = "Invalid Username Or Password"
+      render 'new'
     end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    flash[:success] = "Successfully Logged Out"
+    redirect_to login_path
   end
 
   private 
