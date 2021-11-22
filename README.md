@@ -43,3 +43,8 @@ end
 ```
 $ rails db:migrate
 ```
+
+## Branches
+1. master
+2. create-users
+3. user_password
