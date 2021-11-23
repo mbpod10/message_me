@@ -10,14 +10,32 @@ import "channels"
 import '@doabit/semantic-ui-sass'
 // import '@doabit/semantic-ui-sass/src/scss/semantic-ui.scss'
 
+function scroll_bottom() {
+  if ($('#messages').length > 0) {
+    $('#messages').scrollTop($('#messages')[0].scrollHeight)
+  }
+}
+
+function submitMessage() {
+  $('#message_body').on('keydown', function (e) {
+    if (e.keyCode == 13) {
+      $('button').click()
+      e.target.value = ""
+    }
+  })
+}
+
 $(document).on("turbolinks:load", function () {
   $(".ui.dropdown").dropdown();
   $('.message .close').on('click', function () {
     $(this).closest('.message').transition('fade');
   });
+  submitMessage();
+  scroll_bottom();
 })
 
 
+export default scroll_bottom
 
 Rails.start()
 Turbolinks.start()

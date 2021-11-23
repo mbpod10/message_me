@@ -20,5 +20,9 @@
     <div class="item">      
       <%= link_to "Sign Up", signup_path, class: "ui primary button"%>
     </div>
+  <% else %>
+    <div class="item">      
+      <%= current_user.username %>
+    </div>
   <% end %>
 </div>
