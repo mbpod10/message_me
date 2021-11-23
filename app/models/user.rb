@@ -8,6 +8,8 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false },
             length: { maximum: 350 }
   validates :password, presence: true
+  
+  scope :find_online, -> { where('online = ?', true) }
 end
 
 

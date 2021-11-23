@@ -75,3 +75,7 @@ end
 # config/routes.rb
 mount ActionCable.server, at: '/cable'
 ```
+
+```rb
+User.first.toggle!(:online)
+```
