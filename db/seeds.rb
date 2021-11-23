@@ -8,6 +8,18 @@
 
 User.create(username: "mbpod10", email: "mbpod10@gmail.com", password: "123")
 User.create(username: "beep10", email: "beep10@gmail.com", password: "123")
+User.create(username: "martha87", email: "martha87@gmail.com", password: "123")
+User.create(username: "mark15", email: "mark15@gmail.com", password: "123")
+User.create(username: "luke47", email: "luke47@gmail.com", password: "123")
+User.create(username: "john69", email: "john69@gmail.com", password: "123")
+User.create(username: "mary98", email: "mary98@gmail.com", password: "123")
+User.create(username: "chris02", email: "chris02@gmail.com", password: "123")
+User.create(username: "tyler47", email: "tyler47@gmail.com", password: "123")
+User.create(username: "barabas47", email: "barabas47@gmail.com", password: "123")
+User.create(username: "gimle56", email: "gimle56@gmail.com", password: "123")
+User.create(username: "roger78", email: "roger78@gmail.com", password: "123")
+User.create(username: "jamie65", email: "jamie65@gmail.com", password: "123")
+User.create(username: "hyreme2", email: "hyreme2@gmail.com", password: "123")
 
 Message.create(body: "This is my first message", user_id: 1)
 Message.create(body: "This is my second message", user_id: 1)
