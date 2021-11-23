@@ -53,3 +53,25 @@ $ rails db:migrate
 2. create-users
 3. user_password
 4. messages_branch
+5. websocket
+  
+## Chatroom Channel
+```
+$ rails generate channel chatroom
+```
+```rb
+# app/channels/chatroom_channel.rb
+class ChatroomChannel < ApplicationCable::Channel
+  def subscribed
+    stream_from "chatroom_channel"
+  end
+
+  def unsubscribed
+    # Any cleanup needed when channel is unsubscribed
+  end
+end
+```
+```rb
+# config/routes.rb
+mount ActionCable.server, at: '/cable'
+```
