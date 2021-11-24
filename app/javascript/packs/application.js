@@ -10,7 +10,7 @@ import "channels"
 import '@doabit/semantic-ui-sass'
 // import '@doabit/semantic-ui-sass/src/scss/semantic-ui.scss'
 
-function scroll_bottom() {
+function scroll_bottom_messages() {
   if ($('#messages').length > 0) {
     $('#messages').scrollTop($('#messages')[0].scrollHeight)
   }
@@ -25,17 +25,19 @@ function submitMessage() {
   })
 }
 
+
+
 $(document).on("turbolinks:load", function () {
   $(".ui.dropdown").dropdown();
   $('.message .close').on('click', function () {
     $(this).closest('.message').transition('fade');
   });
   submitMessage();
-  scroll_bottom();
+  scroll_bottom_messages();
 })
 
 
-export default scroll_bottom
+export default scroll_bottom_messages
 
 Rails.start()
 Turbolinks.start()

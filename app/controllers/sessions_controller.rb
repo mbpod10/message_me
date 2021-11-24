@@ -11,7 +11,10 @@ class SessionsController < ApplicationController
       user.toggle!(:online)
       # user.online = [true]
       flash[:success] = "#{user.username} Logged In"
+      ActionCable.server.broadcast  "users_channel", 
+                                    {user: user_render_login(user), login: "login"}
       redirect_to root_path
+      
     else
       flash.now[:error] = "Invalid Username Or Password"
       render 'new'
@@ -20,7 +23,10 @@ class SessionsController < ApplicationController
 
   def destroy
     current_user.toggle!(:online)
-    # current_user.online = [false]
+    # # current_user.online = [false]
+    ActionCable.server.broadcast  "users_channel", 
+                                    {user: user_render_logout(current_user), logout: "logout",
+                                    id: current_user.id}
     session[:user_id] = nil
     flash[:success] = "Successfully Logged Out"
     redirect_to login_path
@@ -37,6 +43,14 @@ class SessionsController < ApplicationController
     if logged_in?
       flash[:error] = "You are already logged in"
     end
+  end
+
+  def user_render_login(user)
+    render_to_string(partial: "users/user", locals: {user: user})
+  end
+  
+  def user_render_logout(user)
+    render_to_string(partial: "users/user", locals: {user: user})
   end
 
 end

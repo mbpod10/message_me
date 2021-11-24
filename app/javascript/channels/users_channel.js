@@ -1,7 +1,6 @@
 import consumer from "./consumer"
-import scroll_bottom_messages from "../packs/application"
 
-consumer.subscriptions.create("ChatroomChannel", {
+consumer.subscriptions.create("UsersChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
   },
@@ -12,7 +11,15 @@ consumer.subscriptions.create("ChatroomChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
-    $('#message-container').append(data.mod_message)
-    scroll_bottom_messages()
+
+    if (data.login) {
+      $('#users-container').append(data.user)
+    }
+
+    else if (data.logout) {
+      $(`#user_${data.id}`).remove()
+    }
+
+
   }
 });
