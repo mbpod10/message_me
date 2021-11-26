@@ -8,8 +8,9 @@ class SessionsController < ApplicationController
     user = User.find_by(username: get_credentials[:username])
     if user && user.authenticate(get_credentials[:password])
       session[:user_id] = user.id
-      user.toggle!(:online)
-      # user.online = [true]
+      if !user[:online]
+        user.toggle!(:online)
+      end
       flash[:success] = "#{user.username} Logged In"
       ActionCable.server.broadcast  "users_channel", 
                                     {user: user_render_login(user), login: "login"}
@@ -22,8 +23,10 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    current_user.toggle!(:online)
-    # # current_user.online = [false]
+    if current_user.online
+      current_user.toggle!(:online)
+    end
+    # current_user.toggle!(:online)    
     ActionCable.server.broadcast  "users_channel", 
                                     {user: user_render_logout(current_user), logout: "logout",
                                     id: current_user.id}

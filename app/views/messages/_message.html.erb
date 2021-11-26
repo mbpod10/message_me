@@ -1,7 +1,7 @@
 <div class="event">
   <div class="content">
     <div class="summary">
-      (<%= message.created_at.strftime("%m/%d/%Y") %>) 
+      (<%= message.created_at.strftime("%m/%d/%y %I:%M%p") %>) 
       <a><%= message.user.username %>: </a> <%= message.body %>
     </div>
   </div>
