@@ -10,6 +10,13 @@ before_action :require_user, only: [:create]
     end
   end
 
+  def destroy
+    message = Message.find(params[:id])
+    ActionCable.server.broadcast  "chatroom_channel", 
+                                    {delete_message: true, id: message.id}
+    message.destroy
+  end
+
   private
   def message_params
     params.require(:message).permit(:body)
@@ -17,6 +24,10 @@ before_action :require_user, only: [:create]
 
   def message_render(message)
     render(partial: 'message', locals: {message: message})
+  end
+
+  def delete_render
+    render(partial: 'message')
   end
 
 end

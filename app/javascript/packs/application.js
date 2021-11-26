@@ -18,17 +18,13 @@ function scroll_bottom_messages() {
 
 function submitMessage() {
   $('#message_body').on('keydown', function (e) {
-    if (e.keyCode == 13 || e.keyCode == 0) {
+    if (e.keyCode == 13) {
       $('button').click()
       e.target.value = ""
     }
-    else if ($('button').click())
-      e.target.value = ""
+
   })
 }
-
-
-
 
 $(document).on("turbolinks:load", function () {
   $(".ui.dropdown").dropdown();

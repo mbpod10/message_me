@@ -1,4 +1,4 @@
-<div class="event active">
+<div class="event active" id="message_<%= message.id %>">
   <div class="content">
     <div class="summary">
       <div class="flex item">
@@ -9,8 +9,10 @@
         </div>
 
         <div>
-          <% if current_user.id == message.user_id%>
-            <i class="trash alternate icon red"></i>
+          <% if current_user.id == message.user_id%>            
+             <%= link_to "/message/#{message.id}", :method => 'delete' do %>
+               <i class="trash alternate icon red"></i>
+             <% end %>          
           <% end %>
         </div>
 
