@@ -1,2 +1,1 @@
-<a class="item" id="user_<%= user.id %>" %> <%= user.username %> </a>
-
+<%= link_to user.username, user_path(user), class: "item", id: "user_#{user.id}" %>

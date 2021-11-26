@@ -1,8 +1,20 @@
-<div class="event">
+<div class="event active">
   <div class="content">
     <div class="summary">
-      (<%= message.created_at.strftime("%m/%d/%y %I:%M%p") %>) 
-      <a><%= message.user.username %>: </a> <%= message.body %>
+      <div class="flex item">
+
+        <div>
+          (<%= message.created_at.strftime("%m/%d/%y %I:%M%p") %>) 
+          <a><%= link_to message.user.username, user_path(message.user) %>: </a> <%= message.body %>
+        </div>
+
+        <div>
+          <% if current_user.id == message.user_id%>
+            <i class="trash alternate icon red"></i>
+          <% end %>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
