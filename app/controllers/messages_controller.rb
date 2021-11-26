@@ -1,20 +1,20 @@
 class MessagesController < ApplicationController
-before_action :require_user, only: [:create]
+before_action :require_user, only: [:create, :destroy]
+before_action :find_message, only: [:destroy]
+before_action :require_same_user, only: [:destroy]
 
   def create
     message = current_user.messages.build(message_params)
-    if message.save
-      # redirect_to root_path
+    if message.save     
       ActionCable.server.broadcast  "chatroom_channel", 
                                     {mod_message: message_render(message)}
     end
   end
 
   def destroy
-    message = Message.find(params[:id])
     ActionCable.server.broadcast  "chatroom_channel", 
-                                    {delete_message: true, id: message.id}
-    message.destroy
+                                    {delete_message: true, id: @message.id}
+    @message.destroy
   end
 
   private
@@ -26,8 +26,17 @@ before_action :require_user, only: [:create]
     render(partial: 'message', locals: {message: message})
   end
 
-  def delete_render
-    render(partial: 'message')
+  def find_message
+    @message = Message.find(params[:id])
+  end
+
+  def require_same_user
+    if current_user != @message.user
+      flash[:error] = "You Can Only Delete Your Own Messages!"
+      redirect_to root_path
+      # render(partial: 'message')
+      return
+    end
   end
 
 end
